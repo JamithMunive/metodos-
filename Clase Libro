@@ -1,0 +1,31 @@
+ Clase Libro
+
+class Libro:
+    def __init__(self, titulo, autor, numero_paginas):
+        self.titulo = titulo
+        self.autor = autor
+        self.numero_paginas = numero_paginas
+        self.pagina_actual = 1
+
+    def avanzar_paginas(self, paginas):
+        if self.pagina_actual + paginas <= self.numero_paginas:
+            self.pagina_actual += paginas
+        else:
+            raise ValueError("No se puede avanzar más allá del total de páginas")
+
+    def retroceder_paginas(self, paginas):
+        if self.pagina_actual - paginas >= 1:
+            self.pagina_actual -= paginas
+        else:
+            raise ValueError("No se puede retroceder más allá de la página 1")
+
+    def consultar_pagina_actual(self):
+        return self.pagina_actual
+
+    def informacion_libro(self):
+        return {
+            "titulo": self.titulo,
+            "autor": self.autor,
+            "numero_paginas": self.numero_paginas,
+            "pagina_actual": self.pagina_actual
+        }
