@@ -1,0 +1,21 @@
+Validación de tarjetas
+
+class TarjetaCredito:
+    def __init__(self, numero_tarjeta):
+        self.numero_tarjeta = numero_tarjeta
+
+    @staticmethod
+    def validar_tarjeta(numero):
+        numero = str(numero)
+        suma = 0
+        invertir = numero[::-1]
+
+        for i in range(len(invertir)):
+            n = int(invertir[i])
+            if i % 2 == 1:
+                n *= 2
+                if n > 9:
+                    n -= 9
+            suma += n
+
+        return suma % 10 == 0
